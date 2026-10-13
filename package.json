@@ -1,0 +1,17 @@
+{
+  "name": "zotero-veil",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Scoped Material Design 3 theme for Zotero 10",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "0.3.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

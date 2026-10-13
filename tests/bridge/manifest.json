@@ -1,0 +1,6 @@
+{
+  "manifest_version": 2,
+  "name": "Isolated Material Theme Test Bridge",
+  "version": "1.0.0",
+  "applications": { "zotero": { "id": "zmt-isolated-test@example.invalid", "update_url": "https://example.invalid/zmt-test/updates.json", "strict_min_version": "10.0", "strict_max_version": "10.0.*" } }
+}

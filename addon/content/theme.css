@@ -1,0 +1,245 @@
+/* Material 3 token baseline.
+   Only verified Zotero library chrome and this plugin's settings are styled.
+   Native virtual row positions/heights, inline column widths and editors stay intact. */
+@font-face{font-family:ZMT Roboto;src:url('../assets/roboto.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:ZMT Roboto;src:url('../assets/roboto-medium.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:ZMT Symbols;src:url('../assets/symbols.ttf') format('truetype');font-style:normal;font-weight:400;font-display:block}
+
+:root[data-zmt]{
+  --zmt-shape-xs:4px;--zmt-shape-sm:8px;--zmt-shape-md:12px;--zmt-shape-full:999px;
+  --zmt-duration-short:100ms;--zmt-duration-medium:200ms;--zmt-easing:cubic-bezier(.2,0,0,1);
+  --zmt-font:ZMT Roboto,"PingFang SC",sans-serif;
+  --zmt-type-body-medium:14px;--zmt-type-body-small:12px;--zmt-type-title-medium:16px;--zmt-type-title-large:22px;
+  --zmt-hover:color-mix(in srgb,var(--zmt-on-surface) 8%,transparent);
+  --zmt-pressed:color-mix(in srgb,var(--zmt-on-surface) 12%,transparent);
+  --zmt-dragged:color-mix(in srgb,var(--zmt-on-surface) 16%,transparent);
+  --zmt-disabled-content:color-mix(in srgb,var(--zmt-on-surface) 38%,transparent);
+  --zmt-disabled-container:color-mix(in srgb,var(--zmt-on-surface) 12%,transparent);
+}
+
+/* Adapt the native theme vocabulary only inside the library. */
+:root[data-zmt] :is(#zotero-pane,#zotero-title-bar,#zmt-settings,#zotero-context-pane){
+  --color-background:var(--zmt-surface);--material-background:var(--zmt-surface);
+  --color-sidepane:var(--zmt-surface-container);--material-sidepane:var(--zmt-surface-container);
+  --color-toolbar:var(--zmt-surface-container);--material-toolbar:var(--zmt-surface-container);
+  --color-stripe:var(--zmt-surface);--material-stripe:var(--zmt-surface);
+  --color-tabbar:var(--zmt-surface-container);--material-tabbar:var(--zmt-surface-container);
+  --color-control:var(--zmt-surface-container-highest);--material-control:var(--zmt-surface-container-highest);
+  --color-button:var(--zmt-surface-container-low);--material-button:var(--zmt-surface-container-low);
+  --color-border:var(--zmt-outline);--material-border:1px solid var(--zmt-outline);
+  --material-border-quarternary:1px solid var(--zmt-outline-variant);--material-border-quinary:1px solid var(--zmt-outline-variant);
+  --color-panedivider:var(--zmt-outline-variant);--material-panedivider:var(--zmt-outline-variant);
+  --color-form-element-base-background:var(--zmt-surface-container-highest);
+  --color-accent:var(--zmt-primary);--color-accent-text:var(--zmt-on-primary);
+  --fill-primary:var(--zmt-on-surface);--fill-secondary:var(--zmt-on-surface-variant);
+  --fill-tertiary:var(--zmt-outline);--fill-quarternary:var(--zmt-disabled-container);--fill-quinary:var(--zmt-hover);--fill-senary:var(--zmt-hover);
+  --color-quarternary-on-background:var(--zmt-pressed);--color-quinary-on-background:var(--zmt-hover);
+  --color-quarternary-on-sidepane:var(--zmt-secondary-container);--color-quinary-on-sidepane:var(--zmt-hover);
+  --material-mix-quarternary:var(--zmt-pressed);--material-mix-quinary:var(--zmt-hover);
+  --color-focus-border:var(--zmt-primary);--color-focus-outer-border:var(--zmt-surface);
+  --color-scrollbar:var(--zmt-outline);--color-scrollbar-hover:var(--zmt-on-surface-variant);--color-scrollbar-background:transparent;
+  --color-invalid:var(--zmt-error);--color-invalid-background:var(--zmt-error-container);
+  --accent-highlight:var(--zmt-tertiary-container);
+  color:var(--zmt-on-surface);font-family:var(--zmt-font);
+}
+:root[data-zmt-mode=light] :is(#zotero-pane,#zmt-settings){color-scheme:light}
+:root[data-zmt-mode=dark] :is(#zotero-pane,#zmt-settings){color-scheme:dark}
+:root[data-zmt] #zotero-pane{background:var(--zmt-surface)}
+:root[data-zmt] #zotero-collections-pane{background:var(--zmt-surface-container)}
+:root[data-zmt] :is(#zotero-collections-tree-container,#zotero-collections-tree,#zotero-tag-selector){background:var(--zmt-surface-container);color:var(--zmt-on-surface)}
+:root[data-zmt] :is(#zotero-items-pane,#zotero-items-tree){background:var(--zmt-surface);color:var(--zmt-on-surface)}
+:root[data-zmt] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar,#zotero-title-bar,#tab-bar-container){background:var(--zmt-surface-container);color:var(--zmt-on-surface);border-color:var(--zmt-outline-variant)}
+:root[data-zmt] #tab-bar-container .tab{background:transparent;color:var(--zmt-on-surface-variant);box-shadow:none}
+:root[data-zmt] #tab-bar-container .tab.selected{background:var(--zmt-secondary-container)!important;color:var(--zmt-on-secondary-container)!important;border-radius:var(--zmt-shape-full);box-shadow:none}
+:root[data-zmt] #tab-bar-container .tab:hover{background:var(--zmt-hover)}
+:root[data-zmt] #tab-bar-container .tab.selected:hover{background:color-mix(in srgb,var(--zmt-on-secondary-container) 8%,var(--zmt-secondary-container))}
+:root[data-zmt] :is(#zotero-collections-splitter,#zotero-items-splitter){background:var(--zmt-surface-container);border:0;border-inline-start:1px solid var(--zmt-outline-variant)}
+:root[data-zmt] #zotero-tags-splitter{background:var(--zmt-surface-container);border:0;border-block-start:1px solid var(--zmt-outline-variant)}
+
+/* Virtualized data table: retain native font size and measured row geometry. */
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .virtualized-table{color:var(--zmt-on-surface)}
+:root[data-zmt] #zotero-items-tree .virtualized-table .row{border-radius:0;color:var(--zmt-on-surface);background:var(--zmt-surface)}
+:root[data-zmt] #zotero-collections-tree .row{border-radius:var(--zmt-shape-full);color:var(--zmt-on-surface);background:transparent}
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .virtualized-table .row.selected{background:var(--zmt-secondary-container)!important;color:var(--zmt-on-secondary-container)!important}
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .row:not(.selected):hover{background:var(--zmt-hover)}
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .row:not(.selected):active{background:var(--zmt-pressed)}
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .row.selected:hover{background:color-mix(in srgb,var(--zmt-on-secondary-container) 8%,var(--zmt-secondary-container))!important}
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .row.selected:active{background:color-mix(in srgb,var(--zmt-on-secondary-container) 12%,var(--zmt-secondary-container))!important}
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .virtualized-table:focus-within .row.focused{outline:2px solid var(--zmt-primary);outline-offset:-2px}
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .row.drop:not(.flashing){background:color-mix(in srgb,var(--zmt-on-secondary-container) 16%,var(--zmt-secondary-container))!important;color:var(--zmt-on-secondary-container)!important}
+:root[data-zmt] :is(#zotero-collections-tree,#zotero-items-tree) .virtualized-table .row.selected .twisty.icon-css{fill:var(--zmt-on-secondary-container)}
+:root[data-zmt] #zotero-items-tree :is(.virtualized-table-header,.virtualized-table-sticky-section-header-content){background:var(--zmt-surface-container-low);color:var(--zmt-on-surface-variant);font-weight:500}
+:root[data-zmt] #zotero-items-tree .virtualized-table-header .cell:hover{background:var(--zmt-hover)}
+:root[data-zmt] #zotero-items-tree .virtualized-table-header .cell.dragging{background:var(--zmt-dragged)}
+:root[data-zmt] #zotero-items-tree .column-drag-marker{background:var(--zmt-primary)}
+:root[data-zmt] #zotero-items-tree .icon-item-type[data-item-type=journalArticle]{background:none!important;color:inherit}
+:root[data-zmt] #zotero-items-tree .icon-item-type[data-item-type=journalArticle]::before{content:'article';font:400 16px/1 ZMT Symbols;color:currentColor}
+:root[data-zmt] #zotero-collections-tree :is(.icon-collection,.icon-library,.icon-duplicates,.icon-trash){background:none!important;color:inherit}
+:root[data-zmt] #zotero-collections-tree :is(.icon-collection,.icon-library,.icon-duplicates,.icon-trash)::before{font:400 16px/1 ZMT Symbols;color:currentColor}
+:root[data-zmt] #zotero-collections-tree .icon-collection::before{content:'folder'}
+:root[data-zmt] #zotero-collections-tree .icon-library::before{content:'library_books'}
+:root[data-zmt] #zotero-collections-tree .icon-duplicates::before{content:'content_copy'}
+:root[data-zmt] #zotero-collections-tree .icon-trash::before{content:'delete'}
+:root[data-zmt] #zotero-items-tree :is(.year,.date){font-variant-numeric:tabular-nums}
+:root[data-zmt] #zotero-items-tree :is(.items-tree-message,.virtualized-table-loading){color:var(--zmt-on-surface-variant);background:var(--zmt-surface);font-size:var(--zmt-type-body-medium);line-height:20px}
+:root[data-zmt] #zotero-items-tree .items-tree-message a{color:var(--zmt-primary)}
+
+/* Existing commands and focus semantics, no extra command buttons. */
+:root[data-zmt] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar)>:is(toolbarbutton,hbox)>toolbarbutton,
+:root[data-zmt] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar)>toolbarbutton{background:transparent;color:var(--zmt-on-surface-variant);border-radius:var(--zmt-shape-full);border-color:transparent;transition:background-color var(--zmt-duration-short) var(--zmt-easing)}
+:root[data-zmt] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar) toolbarbutton:not([disabled=true]):hover{background:var(--zmt-hover)}
+:root[data-zmt] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar) toolbarbutton:not([disabled=true]):active{background:var(--zmt-pressed)}
+:root[data-zmt] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar) toolbarbutton[disabled=true]{color:var(--zmt-disabled-content);opacity:1}
+:root[data-zmt] #zotero-tb-add{background:var(--zmt-primary)!important;color:var(--zmt-on-primary)!important}
+:root[data-zmt] #zotero-tb-add:not([disabled=true]):hover{background:color-mix(in srgb,var(--zmt-on-primary) 8%,var(--zmt-primary))!important}
+:root[data-zmt] #zotero-tb-add:not([disabled=true]):active{background:color-mix(in srgb,var(--zmt-on-primary) 12%,var(--zmt-primary))!important}
+:root[data-zmt] #zotero-tb-add[disabled=true]{background:var(--zmt-disabled-container)!important;color:var(--zmt-disabled-content)!important}
+:root[data-zmt] :is(#zotero-tb-add,#zotero-tb-collection-add,#zotero-tb-collections-search,#zotero-tb-attachment-add,#zotero-tb-note-add)>image.toolbarbutton-icon{display:none}
+:root[data-zmt] :is(#zotero-tb-add,#zotero-tb-collection-add,#zotero-tb-collections-search,#zotero-tb-attachment-add,#zotero-tb-note-add)::before{font:400 20px/1 ZMT Symbols;font-feature-settings:'liga';width:20px;height:20px;color:currentColor}
+:root[data-zmt] #zotero-tb-add::before,:root[data-zmt] #zotero-tb-collection-add::before{content:'add'}
+:root[data-zmt] #zotero-tb-collections-search::before{content:'search'}
+:root[data-zmt] #zotero-tb-attachment-add::before{content:'attach_file'}
+:root[data-zmt] #zotero-tb-note-add::before{content:'article'}
+
+/* Search's original dropdown, input and advanced action keep their hit regions. */
+/* Search field and trailing advanced command share one container silhouette. */
+:root[data-zmt] #search-wrapper{height:30px;align-self:center;box-sizing:border-box;background:var(--zmt-surface-container-high);color:var(--zmt-on-surface);border:1px solid var(--zmt-outline-variant);border-radius:var(--zmt-shape-full)}
+:root[data-zmt] #zotero-tb-search-textbox{appearance:none;background:transparent;color:var(--zmt-on-surface);border:0;border-radius:var(--zmt-shape-full);box-shadow:none}
+:root[data-zmt] #search-wrapper:focus-within{border-color:var(--zmt-primary);box-shadow:0 0 0 1px var(--zmt-primary)}
+:root#main-window[data-zmt] #search-wrapper #zotero-tb-search-advanced-button{appearance:none;background:transparent;color:var(--zmt-on-surface-variant);border:0;border-radius:var(--zmt-shape-full);box-shadow:none;align-self:center}
+:root#main-window[data-zmt] #search-wrapper #zotero-tb-search-advanced-button:hover{background:var(--zmt-hover)}
+:root#main-window[data-zmt] #search-wrapper #zotero-tb-search-advanced-button:active{background:var(--zmt-pressed)}
+:root#main-window[data-zmt] #search-wrapper #zotero-tb-search-advanced-button:focus-visible{outline:2px solid var(--zmt-primary);outline-offset:-2px}
+:root[data-zmt] #zotero-tag-selector .tag-selector-filter-pane{background:var(--zmt-surface-container);border-color:var(--zmt-outline-variant)}
+:root[data-zmt] #zotero-tag-selector .search-input{background:var(--zmt-surface-container-high);color:var(--zmt-on-surface);border-color:var(--zmt-outline);border-radius:var(--zmt-shape-full)}
+:root[data-zmt] #zotero-tag-selector .tag-selector-message{color:var(--zmt-on-surface-variant)}
+:root[data-zmt] #zotero-tag-selector .tag-selector-item.selected{background:var(--zmt-secondary-container);color:var(--zmt-on-secondary-container);border-radius:var(--zmt-shape-sm)}
+
+/* Built-in details only; no custom sections, editor documents or attachment preview. */
+:root[data-zmt] #zotero-item-pane{background:var(--zmt-surface-container-low);color:var(--zmt-on-surface)}
+:root[data-zmt] #zotero-item-pane :is(.zotero-view-item-main,#zotero-view-item,#zotero-item-message){background:var(--zmt-surface-container-low);color:var(--zmt-on-surface)}
+:root[data-zmt] #zotero-item-pane :is(item-pane-header,info-box,abstract-box,attachments-box,notes-box,tags-box,related-box,libraries-collections-box)>collapsible-section>.head{color:var(--zmt-on-surface);background:var(--zmt-surface-container-low);border-color:var(--zmt-outline-variant)}
+:root[data-zmt] #zotero-item-pane item-pane-header{background:var(--zmt-surface-container-low);color:var(--zmt-on-surface);border-color:var(--zmt-outline-variant)}
+:root[data-zmt] #zotero-item-pane item-pane-header .title{font-size:calc(var(--zotero-font-size)*1.230769);font-weight:500;line-height:1.5;overflow-wrap:anywhere}
+:root[data-zmt] #zotero-item-pane info-box .meta-label{color:var(--zmt-on-surface-variant)}
+:root[data-zmt] #zotero-item-pane info-box .meta-data{color:var(--zmt-on-surface)}
+:root[data-zmt] #zotero-item-pane info-box .meta-data:hover{background:var(--zmt-hover);border-radius:var(--zmt-shape-xs)}
+:root[data-zmt] #zotero-item-pane info-box :is(input,textarea){background:transparent;color:var(--zmt-on-surface);border-color:transparent}
+:root[data-zmt] #zotero-item-pane info-box :is(input,textarea):focus{background:var(--zmt-surface-container-highest);border-color:var(--zmt-primary)}
+:root[data-zmt] #zotero-item-pane info-box .meta-row:has(.meta-data:hover) .meta-label{color:var(--zmt-on-surface-variant)}
+:root[data-zmt] #zotero-item-pane .zotero-item-pane-message-box{color:var(--zmt-on-surface-variant)}
+:root[data-zmt] #zotero-item-pane item-pane-sidenav{background:var(--zmt-surface-container);border-color:var(--zmt-outline-variant);color:var(--zmt-on-surface-variant)}
+:root[data-zmt] #zotero-item-pane item-pane-sidenav .selected{background:var(--zmt-secondary-container);color:var(--zmt-on-secondary-container);border-radius:var(--zmt-shape-full)}
+:root[data-zmt] #zotero-item-pane item-pane-sidenav .btn:not([custom]){fill:var(--zmt-on-surface-variant);stroke:var(--zmt-on-surface-variant)}
+:root[data-zmt] :is(#zotero-collections-tree,#tab-bar-container,#zotero-item-pane item-pane-header,#zotero-item-pane info-box,#zotero-item-pane abstract-box,#zotero-item-pane attachments-box,#zotero-item-pane notes-box,#zotero-item-pane tags-box,#zotero-item-pane related-box,#zotero-item-pane libraries-collections-box){--accent-blue:var(--zmt-on-surface-variant);--accent-azure:var(--zmt-on-surface-variant);--accent-green:var(--zmt-on-surface-variant);--accent-yellow:var(--zmt-on-surface-variant);--accent-orange:var(--zmt-on-surface-variant);--accent-teal:var(--zmt-on-surface-variant);--accent-wood:var(--zmt-on-surface-variant);--accent-red:var(--zmt-on-surface-variant)}
+
+/* Only in-document library popups. macOS native menu rendering may ignore this. */
+:root[data-zmt] #zotero-pane :is(menupopup,panel){--color-menu:var(--zmt-surface-container);--material-menu:var(--zmt-surface-container);--color-menu-opaque:var(--zmt-surface-container);color:var(--zmt-on-surface);border-color:var(--zmt-outline-variant)}
+:root[data-zmt] #zotero-pane progress{accent-color:var(--zmt-primary)}
+:root[data-zmt] #zotero-pane :is(#zotero-pane-progress-label,#zotero-tab-cover){color:var(--zmt-on-surface)}
+:root[data-zmt] #zotero-pane :is(#post-upgrade-banner,#sync-reminder-banner,#file-renaming-banner){background:var(--zmt-tertiary-container);color:var(--zmt-on-tertiary-container);box-shadow:none}
+:root[data-zmt] #zotero-pane :is(#post-upgrade-banner,#sync-reminder-banner,#file-renaming-banner) :is(a,button){color:var(--zmt-on-tertiary-container)}
+:root[data-zmt] #zotero-pane :is(#post-upgrade-banner,#sync-reminder-banner,#file-renaming-banner) button{appearance:none;background:transparent;border:1px solid var(--zmt-on-tertiary-container);border-radius:var(--zmt-shape-full);box-shadow:none}
+
+/* First-party settings: exact M3 body, label and title roles. */
+:root#zotero-prefs[data-zmt]:has(.pane-container:not([hidden])>#zmt-settings){background:var(--zmt-surface);color:var(--zmt-on-surface)}
+:root#zotero-prefs[data-zmt]:has(.pane-container:not([hidden])>#zmt-settings) :is(#prefs-outer-container,#prefs-inner-container,#prefs-content,#prefs-search-container){background:var(--zmt-surface);color:var(--zmt-on-surface)}
+:root#zotero-prefs[data-zmt]:has(.pane-container:not([hidden])>#zmt-settings) #prefs-navigation{background:var(--zmt-surface-container);color:var(--zmt-on-surface);border-color:var(--zmt-outline-variant)}
+:root#zotero-prefs[data-zmt]:has(.pane-container:not([hidden])>#zmt-settings) #prefs-navigation richlistitem{color:var(--zmt-on-surface);border-radius:var(--zmt-shape-full)}
+:root#zotero-prefs[data-zmt]:has(.pane-container:not([hidden])>#zmt-settings) #prefs-navigation richlistitem[selected=true]{background:var(--zmt-secondary-container);color:var(--zmt-on-secondary-container)}
+:root#zotero-prefs[data-zmt]:has(.pane-container:not([hidden])>#zmt-settings) #prefs-search{background:var(--zmt-surface-container-high);color:var(--zmt-on-surface);border-color:var(--zmt-outline)}
+:root[data-zmt] #zmt-settings{background:var(--zmt-surface);color:var(--zmt-on-surface);font:400 14px/20px var(--zmt-font);letter-spacing:.25px;padding:24px;border-radius:var(--zmt-shape-md);max-width:760px;box-sizing:border-box}
+:root[data-zmt] #zmt-settings h1{font:400 22px/28px var(--zmt-font);letter-spacing:0;margin:0 0 12px;color:var(--zmt-on-surface)}
+:root[data-zmt] #zmt-settings fieldset{margin:24px 0;border:0;padding:0;min-width:0}
+:root[data-zmt] #zmt-settings legend{font:500 16px/24px var(--zmt-font);letter-spacing:.15px;padding:0;margin-bottom:12px;color:var(--zmt-on-surface)}
+:root[data-zmt] #zmt-settings :is(button,input){font:500 14px/20px var(--zmt-font);letter-spacing:.1px;box-sizing:border-box}
+:root[data-zmt] #zmt-settings button{background:transparent;color:var(--zmt-primary);border:1px solid var(--zmt-outline);border-radius:var(--zmt-shape-full);padding:10px 20px;min-height:40px;transition:background-color var(--zmt-duration-short) var(--zmt-easing);position:relative}
+:root[data-zmt] #zmt-settings button:hover{background:color-mix(in srgb,var(--zmt-primary) 8%,var(--zmt-surface))}
+:root[data-zmt] #zmt-settings button:active{background:color-mix(in srgb,var(--zmt-primary) 12%,var(--zmt-surface))}
+:root[data-zmt] #zmt-settings button[aria-pressed=true]{background:var(--zmt-secondary-container);color:var(--zmt-on-secondary-container)}
+:root[data-zmt] #zmt-settings button[aria-pressed=true]:hover{background:color-mix(in srgb,var(--zmt-on-secondary-container) 8%,var(--zmt-secondary-container))}
+:root[data-zmt] #zmt-settings button[aria-pressed=true]:active{background:color-mix(in srgb,var(--zmt-on-secondary-container) 12%,var(--zmt-secondary-container))}
+:root[data-zmt] #zmt-settings :is(button,input):focus-visible{outline:3px solid var(--zmt-primary);outline-offset:3px}
+:root[data-zmt] #zmt-settings .zmt-segmented{display:flex;gap:0;border:1px solid var(--zmt-outline);border-radius:var(--zmt-shape-full);overflow:hidden}
+:root[data-zmt] #zmt-settings .zmt-segmented button{flex:1;min-width:90px;border:0;border-radius:0;border-inline-end:1px solid var(--zmt-outline)}
+:root[data-zmt] #zmt-settings .zmt-segmented button:last-child{border-inline-end:0}
+:root[data-zmt] #zmt-settings .zmt-segmented button:focus-visible{outline-offset:-3px}
+:root[data-zmt] #zmt-settings .zmt-presets{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+:root[data-zmt] #zmt-settings .zmt-seed-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+:root[data-zmt] #zmt-settings input[type=text]{border:1px solid var(--zmt-outline);border-radius:var(--zmt-shape-xs);background:var(--zmt-surface-container-highest);color:var(--zmt-on-surface);padding:12px;min-height:48px;width:140px}
+:root[data-zmt] #zmt-settings input[aria-invalid=true]{border-color:var(--zmt-error)}
+:root[data-zmt] #zmt-settings input[type=color]{border:1px solid var(--zmt-outline);border-radius:var(--zmt-shape-xs);height:48px;width:64px;padding:4px;background:var(--zmt-surface-container-highest)}
+:root[data-zmt] #zmt-settings .zmt-role-swatches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:16px;font-size:12px;line-height:16px}
+:root[data-zmt] #zmt-settings .zmt-role-swatches>div{padding:16px 8px;border-radius:var(--zmt-shape-md);text-align:center}
+:root[data-zmt] #zmt-settings .zmt-primary-swatch{background:var(--zmt-primary);color:var(--zmt-on-primary)}
+:root[data-zmt] #zmt-settings .zmt-secondary-swatch{background:var(--zmt-secondary-container);color:var(--zmt-on-secondary-container)}
+:root[data-zmt] #zmt-settings .zmt-surface-swatch{background:var(--zmt-surface-container-high);color:var(--zmt-on-surface)}
+:root[data-zmt] #zmt-settings .zmt-switch{display:flex;align-items:center;gap:12px;min-height:48px}
+:root[data-zmt] #zmt-settings input[type=checkbox]{appearance:none;width:52px;height:32px;border-radius:var(--zmt-shape-full);background:var(--zmt-surface-container-highest);border:2px solid var(--zmt-outline);position:relative;flex-shrink:0}
+:root[data-zmt] #zmt-settings input[type=checkbox]::before{content:'';position:absolute;left:6px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--zmt-outline);transition:left var(--zmt-duration-short) var(--zmt-easing)}
+:root[data-zmt] #zmt-settings input[type=checkbox]:checked{background:var(--zmt-primary);border-color:var(--zmt-primary)}
+:root[data-zmt] #zmt-settings input[type=checkbox]:checked::before{left:24px;top:2px;width:24px;height:24px;background:var(--zmt-on-primary)}
+:root[data-zmt] #zmt-settings .zmt-support{font:400 12px/16px var(--zmt-font);letter-spacing:.4px;color:var(--zmt-on-surface-variant)}
+:root[data-zmt] #zmt-settings #zmt-feedback{background:var(--zmt-inverse-surface);color:var(--zmt-inverse-on-surface);padding:12px 16px;border-radius:var(--zmt-shape-xs);min-height:20px}
+:root[data-zmt] #zmt-settings #zmt-feedback[data-error=true]{background:var(--zmt-error-container);color:var(--zmt-on-error-container)}
+
+/* Scope reduced motion, including the native disclosure animation, to chrome. */
+:root[data-zmt-motion=reduce] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar,#zmt-settings,#zotero-collections-tree,#zotero-items-tree) *,
+:root[data-zmt-motion=reduce] #zotero-item-pane collapsible-section>.head .twisty{transition:none!important;animation:none!important}
+:root[data-zmt-motion=reduce] #zmt-settings input[type=checkbox]::before{transition:none!important}
+@media(prefers-reduced-motion:reduce){:root[data-zmt] :is(#zmt-settings,#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree) *{transition:none!important}}
+@media(pointer:coarse){:root[data-zmt] #zmt-settings button{min-height:48px}}
+
+/* Full library material, enabled only after native view creation succeeds.
+   One window-wide semantic tint; stronger backing only where text is rendered.
+   PDF/notes subdocuments, input geometry and virtual row measurements stay native. */
+:root#main-window[data-zmt-glass=native]{appearance:none!important;background:color-mix(in srgb,var(--zmt-surface-container) var(--zmt-glass-window-opacity),transparent)!important}
+:root#main-window[data-zmt-glass=native] #zotero-pane{--color-background:transparent;--material-background:transparent;--color-sidepane:transparent;--material-sidepane:transparent;--color-toolbar:transparent;--material-toolbar:transparent;--color-stripe:transparent;--material-stripe:transparent;background:transparent}
+:root#main-window[data-zmt-glass=native] :is(#zotero-collections-pane,#zotero-collections-tree-container,#zotero-collections-tree,#zotero-tag-selector,#zotero-tag-selector .tag-selector-filter-pane,#zotero-items-pane,#zotero-items-tree,#zotero-item-pane,#zotero-title-bar,#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#tab-bar-container,#zotero-tabs-toolbar){background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-items-tree :is(.virtualized-table,.virtualized-table-body,.windowed-list){background:transparent}
+:root#main-window[data-zmt-glass=native] :is(#zotero-items-tree,#zotero-collections-tree) .row:not(.selected):not(.drop){background:transparent}
+:root#main-window[data-zmt-glass=native] :is(#zotero-items-tree,#zotero-collections-tree) .row:not(.selected):not(.drop):hover{background:var(--zmt-hover)}
+:root#main-window[data-zmt-glass=native] :is(#zotero-items-tree,#zotero-collections-tree) .row:not(.selected):not(.drop):active{background:var(--zmt-pressed)}
+:root#main-window[data-zmt-glass=native] #zotero-items-tree :is(.virtualized-table-header,.virtualized-table-sticky-section-header-content,.items-tree-message,.virtualized-table-loading){background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-item-pane :is(.zotero-view-item-main,#zotero-view-item,#zotero-item-message,item-pane-header,item-pane-sidenav){background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-item-pane :is(item-pane-header .title,info-box .meta-row,.zotero-item-pane-message-box){background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-item-pane :is(item-pane-header,info-box,abstract-box,attachments-box,notes-box,tags-box,related-box,libraries-collections-box)>collapsible-section>.head{background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-tag-selector :is(.tag-selector-message,.tag-selector-item:not(.selected)){background:transparent}
+:root#main-window[data-zmt-glass=native] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar) toolbarbutton:not([disabled=true]):not(:hover):not(:active){background:transparent}
+:root#main-window[data-zmt-glass=native] :is(#zotero-collections-splitter,#zotero-items-splitter,#zotero-tags-splitter){background:transparent}
+/* Square navigation rows use the original full-width hit box. */
+:root#main-window[data-zmt-glass=native] #zotero-collections-tree .row{border-radius:0}
+:root#main-window[data-zmt-glass=native] #tab-bar-container .tab:not(.selected){background:transparent}
+:root#main-window[data-zmt-glass=native] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar) toolbarbutton:not([disabled=true]):hover{background:var(--zmt-hover)}
+:root#main-window[data-zmt-glass=native] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar) toolbarbutton:not([disabled=true]):active{background:var(--zmt-pressed)}
+:root[data-zmt] #zmt-settings select{font:500 14px/20px var(--zmt-font);background:var(--zmt-surface-container-highest);color:var(--zmt-on-surface);border:1px solid var(--zmt-outline);border-radius:var(--zmt-shape-xs);padding:10px 12px;margin-inline-start:12px;min-height:40px}
+:root[data-zmt] #zmt-settings select:focus-visible{outline:3px solid var(--zmt-primary);outline-offset:3px}
+:root[data-zmt] #zmt-settings select:disabled{color:var(--zmt-disabled-content);border-color:var(--zmt-disabled-container)}
+
+:root[data-zmt] #zmt-settings .zmt-transparency-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
+:root[data-zmt] #zmt-settings input[type=range]{flex:1;min-width:160px;max-width:420px;accent-color:var(--zmt-primary);min-height:32px}
+:root[data-zmt] #zmt-settings output{min-width:4ch;font-variant-numeric:tabular-nums;color:var(--zmt-on-surface)}
+
+:root[data-zmt] #zmt-settings input[type=range]::-moz-range-track{height:4px;background:var(--zmt-outline);border-radius:var(--zmt-shape-full)}
+:root[data-zmt] #zmt-settings input[type=range]::-moz-range-progress{height:4px;background:var(--zmt-primary);border-radius:var(--zmt-shape-full)}
+:root[data-zmt] #zmt-settings input[type=range]::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:var(--zmt-shape-full);background:var(--zmt-primary)}
+:root[data-zmt] #zmt-settings input[type=range]:disabled::-moz-range-thumb{background:var(--zmt-outline)}
+
+/* Semantic surfaceContainerLowest gives lighter light-mode and darker dark-mode
+   peripheral panels. Context-pane is outside the library pane in reader tabs. */
+:root[data-zmt] #zotero-context-pane{color:var(--zmt-on-surface)}
+:root[data-zmt-mode=light] #zotero-context-pane{color-scheme:light}
+:root[data-zmt-mode=dark] #zotero-context-pane{color-scheme:dark}
+:root[data-zmt] :is(#zotero-collections-pane,#zotero-item-pane,#zotero-context-pane-inner){background:var(--zmt-surface-container-lowest)}
+:root[data-zmt] #zotero-context-pane :is(item-details,.zotero-view-item-container,.zotero-view-item-main,item-pane-header,item-pane-sidenav){background:var(--zmt-surface-container-lowest);color:var(--zmt-on-surface)}
+:root[data-zmt] #zotero-context-pane info-box .meta-label{color:var(--zmt-on-surface-variant)}
+:root[data-zmt] #zotero-context-pane info-box .meta-data{color:var(--zmt-on-surface)}
+:root[data-zmt] #zotero-context-pane :is(item-pane-header,info-box,abstract-box,attachments-box,notes-box,tags-box,related-box,libraries-collections-box)>collapsible-section>.head{background:var(--zmt-surface-container-lowest);color:var(--zmt-on-surface)}
+:root#main-window[data-zmt-glass=native] :is(#zotero-collections-pane,#zotero-item-pane,#zotero-context-pane-inner):not([hidden]){background:var(--zmt-side-wash)}
+:root#main-window[data-zmt-glass=native] #zotero-context-pane :is(item-details,.zotero-view-item-container,.zotero-view-item-main,item-pane-header,item-pane-sidenav){background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-context-pane :is(item-pane-header .title,info-box .meta-row){background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-context-pane :is(item-pane-header,info-box,abstract-box,attachments-box,notes-box,tags-box,related-box,libraries-collections-box)>collapsible-section>.head{background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-context-splitter{background:transparent;border-color:var(--zmt-outline-variant)}
+
+/* Continuous backing allows plain rows; use the stronger text role over glass. */
+:root#main-window[data-zmt-glass=native] :is(#zotero-pane,#zotero-context-pane){--zmt-on-surface-variant:var(--zmt-on-surface)}

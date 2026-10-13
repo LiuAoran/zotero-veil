@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Zotero Veil",
+  "version": "1.0.0",
+  "description": "为 Zotero 带来统一配色与柔和磨砂。",
+  "author": "Zotero Veil contributors",
+  "icons": {
+    "48": "assets/icon.svg",
+    "96": "assets/icon.svg"
+  },
+  "applications": {
+    "zotero": {
+      "id": "material-theme-md3@zotero-theme.local",
+      "update_url": "https://example.invalid/zotero-material-theme/updates.json",
+      "strict_min_version": "10.0",
+      "strict_max_version": "10.0.*"
+    }
+  }
+}
