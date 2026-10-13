@@ -79,7 +79,7 @@ Material colors and soft glass for Zotero on macOS.
 
 毛玻璃是 Material 配色与 macOS 材质的融合扩展，不属于官方 Material Design 3 组件。高通透度在复杂背景下不保证文字对比度，阅读不清时请降低数值。系统菜单、PDF 页面、笔记编辑器和第三方插件区域保留原有外观。独立阅读器窗口、Intel／Rosetta、VoiceOver 和其他插件组合尚未完整验证。
 
-无可用的自动更新服务，升级请手动安装 XPI。设置窗口和内容截图检查不等于桌面背景动态磨砂已验证。详见[验证说明](docs/验证说明.md)。
+暂无可用的自动更新服务，目前升级请手动安装 XPI。设置窗口和内容截图检查不等于桌面背景动态磨砂已验证。详见[验证说明](docs/验证说明.md)。
 
 ## 开发
 
