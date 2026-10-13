@@ -3,7 +3,7 @@ import pathlib, zipfile, json
 root=pathlib.Path(__file__).resolve().parents[1]
 version=json.loads((root/'addon/manifest.json').read_text())['version']
 target=root/f'dist/zotero-veil-{version}-source.zip'
-paths=[root/name for name in ['addon','src','scripts','tests','docs','licenses','README.md','LICENSE','package.json','package-lock.json','.gitignore']]
+paths=[root/name for name in ['addon','src','scripts','tests','docs','licenses','README.md','README.en.md','LICENSE','package.json','package-lock.json','.gitignore']]
 with zipfile.ZipFile(target,'w',zipfile.ZIP_DEFLATED) as archive:
     for item in paths:
         files=item.rglob('*') if item.is_dir() else [item]

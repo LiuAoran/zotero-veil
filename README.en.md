@@ -8,7 +8,6 @@ Material colors and soft glass for Zotero on macOS.
 
 [简体中文](README.md) · [English](README.en.md)
 
-[![Build](https://img.shields.io/github/actions/workflow/status/LiuAoran/zotero-veil/build.yml?branch=main&style=flat-square&label=build)](https://github.com/LiuAoran/zotero-veil/actions/workflows/build.yml)
 [![License](https://img.shields.io/badge/license-MIT-6750A4?style=flat-square)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/LiuAoran/zotero-veil?style=flat-square)](https://github.com/LiuAoran/zotero-veil/stargazers)
 
@@ -16,7 +15,7 @@ Material colors and soft glass for Zotero on macOS.
 ![Zotero](https://img.shields.io/badge/Zotero-10-6750A4?style=flat-square)
 ![Appearance](https://img.shields.io/badge/theme-light_%26_dark-6750A4?style=flat-square)
 
-[**Download XPI**](https://github.com/LiuAoran/zotero-veil/tree/main/downloads) · [Releases](https://github.com/LiuAoran/zotero-veil/releases)
+[**Download XPI**](https://github.com/LiuAoran/zotero-veil/tree/main/downloads)
 
 [Screenshots](#screenshots) · [Installation](#installation) · [Features](#features) · [Compatibility](#compatibility) · [Development](#development)
 
@@ -94,8 +93,6 @@ python3 scripts/package-source.py
 ```
 
 Artifacts are written to `dist/`. `addon/` contains bootstrap, settings, styles, and assets; `src/` contains colors, material handling, lifecycle management, and reader integration. Tests and development scripts are in `tests/` and `scripts/`.
-
-The Build workflow runs automated tests and builds an XPI. It does not validate native macOS rendering or perform an actual Zotero installation.
 
 Use a separate temporary profile for runtime tests. See the [testing guide](docs/测试指南.md) (Chinese). The production XPI excludes the test bridge; never install that bridge in your everyday profile.
 

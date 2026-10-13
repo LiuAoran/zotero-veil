@@ -8,7 +8,6 @@ Material colors and soft glass for Zotero on macOS.
 
 [简体中文](README.md) · [English](README.en.md)
 
-[![Build](https://img.shields.io/github/actions/workflow/status/LiuAoran/zotero-veil/build.yml?branch=main&style=flat-square&label=build)](https://github.com/LiuAoran/zotero-veil/actions/workflows/build.yml)
 [![License](https://img.shields.io/badge/license-MIT-6750A4?style=flat-square)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/LiuAoran/zotero-veil?style=flat-square)](https://github.com/LiuAoran/zotero-veil/stargazers)
 
@@ -16,7 +15,7 @@ Material colors and soft glass for Zotero on macOS.
 ![Zotero](https://img.shields.io/badge/Zotero-10-6750A4?style=flat-square)
 ![Appearance](https://img.shields.io/badge/theme-light_%26_dark-6750A4?style=flat-square)
 
-[**下载 XPI**](https://github.com/LiuAoran/zotero-veil/tree/main/downloads) · [发布页](https://github.com/LiuAoran/zotero-veil/releases)
+[**下载 XPI**](https://github.com/LiuAoran/zotero-veil/tree/main/downloads)
 
 [外观](#外观) · [安装](#安装) · [功能](#功能) · [兼容与限制](#兼容与限制) · [开发](#开发)
 
@@ -92,8 +91,6 @@ npm test
 npm run build
 python3 scripts/package-source.py
 ```
-
-Build 工作流执行自动测试并生成 XPI，不代表 macOS 原生渲染或 Zotero 实机验证。
 
 安装包和源码包生成在 `dist/`。目录说明：
 
