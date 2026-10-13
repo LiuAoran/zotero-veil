@@ -21,7 +21,7 @@ test('Unified material preserves side distinction and continuous contrast protec
  assert.ok(glassTokens('balanced',100).includes('container) 86%,transparent)'));
 });
 
-test('Transparency mapping retains the low range and reaches the intended upper endpoint',()=>{
- assert.ok(glassTokens('balanced',100).includes('--zmt-glass-window-opacity:43.875%'));
- assert.ok(glassTokens('balanced',80).includes('--zmt-glass-window-opacity:82.4%'));
+test('Transparency mapping reaches the clear tint endpoint without fading native blur',()=>{
+ assert.ok(glassTokens('balanced',100).includes('--zmt-glass-window-opacity:10%'));
+ assert.ok(glassTokens('balanced',80).includes('--zmt-glass-window-opacity:28%'));
 });

@@ -69,7 +69,7 @@ Changes apply immediately and are saved automatically. Disabling the plugin rest
 - Light, dark, and system appearance modes.
 - Custom seed colors and three presets, using official Material Color Utilities.
 - Consistent styling for library navigation, search, item lists, details, and reader chrome.
-- Native glass on Apple Silicon Mac, with a slider for the additional tint layer and subtle sidebar separation.
+- Native glass on Apple Silicon Mac, with an adjustable tint layer (10% at the highest transparency), full-strength native blur, and subtle sidebar separation.
 - Visible selection, focus, and editing states; reduced-motion support.
 - Transparent margins outside PDF pages, preserving paper, annotations, item data, and note content.
 

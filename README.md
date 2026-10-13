@@ -69,7 +69,7 @@ Material colors and soft glass for Zotero on macOS.
 - 浅色、深色、跟随系统。
 - 自定义种子色与三个配色预设，使用官方 Material Color Utilities 生成语义配色。
 - 文库导航、搜索、文献列表、详情面板和阅读器工具栏的统一外观。
-- Apple Silicon Mac 原生毛玻璃，可用滑动条调整附加色层；保留柔和模糊和轻微侧栏色差。
+- Apple Silicon Mac 原生毛玻璃，可用滑动条调整附加色层，最高档保留10%色层；保留全强度原生模糊和轻微侧栏色差。
 - 保留选中、焦点及编辑状态，支持减少动态效果。
 - PDF 页外背景透明，纸张、标注、文献数据和笔记内容不变。
 

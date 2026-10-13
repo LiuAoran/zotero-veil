@@ -1,4 +1,4 @@
-import {nativeMaterialAlpha} from './glass.mjs';
+import {nativeMaterialAlpha,nativeMaterialForMode} from './glass.mjs';
 /* Objective-C ctypes declarations and behind-window insertion adapted from
  * Zotero-glass, Copyright (c) 2026 Avi7ii, MIT. Full license is distributed in
  * licenses/Zotero-glass-MIT.txt. Window ownership/rollback are implemented here.
@@ -74,6 +74,7 @@ export class NativeGlass {
       const appearance=this.f.idID(this.cls('NSAppearance'),this.sel('appearanceNamed:'),this.string(mode==='dark'?'NSAppearanceNameDarkAqua':'NSAppearanceNameAqua'));
       if(appearance.isNull())throw new Error('系统材质外观不可用');
       this.setID(record.effect,'setAppearance:',appearance);
+      this.setLong(record.effect,'setMaterial:',nativeMaterialForMode(mode));
       this.f.setDouble(record.effect,this.sel('setAlphaValue:'),nativeMaterialAlpha(transparency));
       // Gecko may recompute opacity after a chrome stylesheet/theme change.
       this.f.setBool(record.window,this.sel('setOpaque:'),0);

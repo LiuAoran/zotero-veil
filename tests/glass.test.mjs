@@ -54,3 +54,11 @@ test('78 percent reference backing keeps strong text contrast; higher transparen
  for(const preset of PRESETS)for(const dark of [false,true]){const roles=createScheme(preset.seed,dark),base=rgb(roles.surfaceContainer),fg=rgb(roles.onSurface);
  for(const wall of [0,1])for(const state of [0,.08,.12]){const composite=base.map((v,i)=>(v*.78+wall*.22)*(1-state)+fg[i]*state);assert.ok(contrast(fg,composite)>=4.5);}}
 });
+
+test('Clear glass keeps native blur while selecting explicit system materials',async()=>{
+ const {nativeMaterialForMode,glassTokens,nativeMaterialAlpha}=await import('../src/glass.mjs');
+ assert.equal(nativeMaterialForMode('dark'),13);assert.equal(nativeMaterialForMode('light'),13);
+ assert.ok(glassTokens('balanced',0).includes('window-opacity:100%'));
+ assert.ok(glassTokens('balanced',100).includes('window-opacity:10%'));
+ for(let t=0;t<=100;t++)assert.equal(nativeMaterialAlpha(t),1);
+});

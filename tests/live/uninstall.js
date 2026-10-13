@@ -3,7 +3,7 @@ const panes=Zotero.PreferencePanes,original=panes._refreshPreferences;
 try{
  for(let cycle=0;cycle<3;cycle++){
   const file=Cc['@mozilla.org/file/local;1'].createInstance(Ci.nsIFile);
-  file.initWithPath(project+'/dist/zotero-veil-1.0.0.xpi');
+  file.initWithPath(project+'/dist/zotero-veil-1.0.1.xpi');
   await(await AddonManager.getInstallForFile(file)).install();
   Zotero.MaterialThemeMD3.setSetting('glass',true);
   await Zotero.Reader.open(72);

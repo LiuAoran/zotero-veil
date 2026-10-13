@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Zotero Veil",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "为 Zotero 带来统一配色与柔和磨砂。",
   "author": "Zotero Veil contributors",
   "icons": {

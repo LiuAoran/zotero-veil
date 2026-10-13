@@ -31,7 +31,7 @@ export function glassPolicy({enabled, reducedTransparency = false, increasedCont
 export function glassTokens(level, transparency = presetTransparency(level)) {
   const alpha = GLASS_LEVELS[normalizeGlassLevel(level)];
   const value = normalizeTransparency(transparency);
-  const tint = value <= 80 ? 100 - .22 * value : 82.4 - (value - 80) * 1.92625;
+  const tint = 100 - .9 * value;
   const windowOpacity = Number(tint.toFixed(3));
   return [
     `--zmt-glass-opacity:${alpha * 100}%;`,
@@ -45,4 +45,9 @@ export function glassTokens(level, transparency = presetTransparency(level)) {
 export function nativeMaterialAlpha(transparency) {
   normalizeTransparency(transparency);
   return 1;
+}
+
+/** System materials, not a configurable native blur radius. */
+export function nativeMaterialForMode(mode) {
+  return 13; // HUD; appearance follows the selected light/dark mode
 }
