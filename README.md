@@ -1,4 +1,28 @@
+<div align="center">
+
+<img src="addon/assets/icon.svg" width="100" height="100" alt="Zotero Veil logo" />
+
 # Zotero Veil
+
+Material colors and soft glass for Zotero on macOS.
+
+[简体中文](README.md) · [English](README.en.md)
+
+[![Build](https://img.shields.io/github/actions/workflow/status/LiuAoran/zotero-veil/build.yml?branch=main&style=flat-square&label=build)](https://github.com/LiuAoran/zotero-veil/actions/workflows/build.yml)
+[![License](https://img.shields.io/badge/license-MIT-6750A4?style=flat-square)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/LiuAoran/zotero-veil?style=flat-square)](https://github.com/LiuAoran/zotero-veil/stargazers)
+
+![Platform](https://img.shields.io/badge/macOS-Apple_Silicon-6750A4?style=flat-square)
+![Zotero](https://img.shields.io/badge/Zotero-10-6750A4?style=flat-square)
+![Appearance](https://img.shields.io/badge/theme-light_%26_dark-6750A4?style=flat-square)
+
+[**下载 XPI**](https://github.com/LiuAoran/zotero-veil/tree/main/downloads) · [发布页](https://github.com/LiuAoran/zotero-veil/releases)
+
+[外观](#外观) · [安装](#安装) · [功能](#功能) · [兼容与限制](#兼容与限制) · [开发](#开发)
+
+</div>
+
+---
 
 面向 macOS Zotero 10 的 Material 配色与柔和磨砂主题。保留 Zotero 原有快捷键、文献操作、列宽调整和面板缩放。
 
@@ -33,7 +57,7 @@
 
 ## 安装
 
-[下载安装包](https://raw.githubusercontent.com/LiuAoran/zotero-veil/main/downloads/zotero-veil-1.0.0.xpi)
+[前往下载目录](https://github.com/LiuAoran/zotero-veil/tree/main/downloads)，打开 XPI 文件并选择 Download raw file。
 
 1. 在 Zotero 的“工具 → 插件”中选择“从文件安装插件”。
 2. 安装 XPI 文件。
@@ -68,6 +92,8 @@ npm test
 npm run build
 python3 scripts/package-source.py
 ```
+
+Build 工作流执行自动测试并生成 XPI，不代表 macOS 原生渲染或 Zotero 实机验证。
 
 安装包和源码包生成在 `dist/`。目录说明：
 
