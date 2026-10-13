@@ -37,9 +37,6 @@ Material colors and soft glass for Zotero on macOS.
 
 ![深色文献库](docs/screenshots/library-dark.png)
 
-<details>
-<summary>阅读器与外观设置</summary>
-
 **浅色阅读器**
 
 ![浅色阅读器](docs/screenshots/reader-light.png)
@@ -51,8 +48,6 @@ Material colors and soft glass for Zotero on macOS.
 **外观设置**
 
 ![外观设置](docs/screenshots/settings.png)
-
-</details>
 
 ## 安装
 
