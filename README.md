@@ -33,7 +33,7 @@
 
 ## 安装
 
-[下载安装包](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.0.xpi?raw=true)
+[下载安装包](https://raw.githubusercontent.com/LiuAoran/zotero-veil/main/downloads/zotero-veil-1.0.0.xpi)
 
 1. 在 Zotero 的“工具 → 插件”中选择“从文件安装插件”。
 2. 安装 XPI 文件。
