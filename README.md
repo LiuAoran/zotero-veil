@@ -109,4 +109,4 @@ python3 scripts/package-source.py
 
 ## 许可证
 
-本项目采用 [MIT](LICENSE) 许可证。第三方组件的许可证与归属见 [licenses/](licenses/NOTICE.md)。
+本项目采用 [MIT](LICENSE) 许可证。第三方组件的许可证与归属见 [licenses/NOTICE.md](licenses/NOTICE.md)。
