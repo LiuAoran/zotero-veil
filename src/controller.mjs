@@ -17,6 +17,9 @@ export class ThemeController {
     this.windows=new Map();this.settings=new Map();this.readers=new Map();this.observers=[];this.paneID=null;this.active=false;this.cache=new Map();
     this.readerListener=({doc})=>this.attachReader(doc);
     this.generation=0;this.startPending=false;
+    // A same-version reinstall must not reuse a cached chrome stylesheet.
+    // Stable within one controller lifetime; never regenerated on refresh.
+    this.styleRevision=Date.now().toString(36)+Math.random().toString(36).slice(2);
     this.nativeGlass=new NativeGlass({...nativeEnvironment,logError:error=>this.zotero.logError(error)});
   }
   cleanup(tasks) {
@@ -62,7 +65,7 @@ export class ThemeController {
     if(!this.active||this.windows.has(win)||win.closed)return;
     const doc=win.document,root=doc.documentElement;
     const record={win,root,attributes:new Map(ROOT_ATTRIBUTES.map(key=>[key,root.getAttribute(key)])),cleanups:[]};
-    const sheet=doc.createElementNS(XHTML,'link');sheet.rel='stylesheet';sheet.href=this.rootURI+'content/theme.css?v='+encodeURIComponent(this.version);sheet.id='zmt-theme-sheet';
+    const sheet=doc.createElementNS(XHTML,'link');sheet.rel='stylesheet';sheet.href=this.rootURI+'content/theme.css?v='+encodeURIComponent(this.version)+'&instance='+this.styleRevision;sheet.id='zmt-theme-sheet';
     const tokens=doc.createElementNS(XHTML,'style');tokens.id='zmt-theme-tokens';
     record.sheet=sheet;record.tokens=tokens;
     record.dark=win.matchMedia('(prefers-color-scheme: dark)');record.motion=win.matchMedia('(prefers-reduced-motion: reduce)');

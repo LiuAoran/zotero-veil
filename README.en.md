@@ -15,7 +15,7 @@ Material colors and frosted glass for Zotero on macOS.
 ![Zotero](https://img.shields.io/badge/Zotero-10-6750A4?style=flat-square)
 ![Appearance](https://img.shields.io/badge/theme-light_%26_dark-6750A4?style=flat-square)
 
-[**Download XPI**](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.2.xpi)
+[**Download XPI**](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.3.xpi)
 
 [Screenshots](#screenshots) · [Installation](#installation) · [Features](#features) · [Compatibility](#compatibility) · [Development](#development)
 
@@ -56,7 +56,7 @@ Real macOS screenshots. Appearance varies with your desktop background, seed col
 
 ## Installation
 
-[Open the download folder](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.2.xpi), select the XPI file, then choose **Download raw file**.
+[Open the download folder](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.3.xpi), select the XPI file, then choose **Download raw file**.
 
 1. In Zotero, open **Tools → Plugins** and choose **Install Plugin From File** from the gear menu.
 2. Select the downloaded XPI.

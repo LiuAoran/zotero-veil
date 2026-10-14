@@ -243,3 +243,27 @@
 
 /* Continuous backing allows plain rows; use the stronger text role over glass. */
 :root#main-window[data-zmt-glass=native] :is(#zotero-pane,#zotero-context-pane){--zmt-on-surface-variant:var(--zmt-on-surface)}
+
+/* Keep popup shadow margins transparent; paint only its rounded content part. */
+:root#main-window[data-zmt] #zotero-lookup-panel{
+  background:transparent!important;
+  color:var(--zmt-on-surface);
+  --panel-background:var(--zmt-surface-container-high);
+  --arrowpanel-background:var(--zmt-surface-container-high);
+  --color-background:var(--zmt-surface-container-high);
+  --material-background:var(--zmt-surface-container-high);
+  --color-menu:var(--zmt-surface-container-high);
+  --material-menu:var(--zmt-surface-container-high);
+  --color-menu-opaque:var(--zmt-surface-container-high);
+}
+:root#main-window[data-zmt] #zotero-lookup-panel > vbox{background:transparent!important}
+:root#main-window[data-zmt] #zotero-lookup-panel::part(content),
+:root#main-window[data-zmt] #zotero-advanced-search-pane-deck{
+  background:var(--zmt-surface-container-high)!important;
+  color:var(--zmt-on-surface);
+}
+/* Native conditions have fixed minimum widths. Wrap instead of crossing panes. */
+:root#main-window[data-zmt] #zotero-advanced-search-pane-deck :is(advanced-search-pane,zoterosearch,search-condition-group,.search-condition-group,.conditions,zoterosearchcondition){min-width:0;max-width:100%;box-sizing:border-box}
+:root#main-window[data-zmt] #zotero-advanced-search-pane-deck .search-condition{min-width:0;max-width:100%;box-sizing:border-box;flex-wrap:wrap;row-gap:8px}
+:root#main-window[data-zmt] #zotero-advanced-search-pane-deck .search-condition > :is(#conditionsmenu,#operatorsmenu,.valuefield,.valuemenu,.value-date-age){min-width:100px;max-width:100%;flex:1 1 140px}
+:root#main-window[data-zmt] #zotero-advanced-search-pane-deck .search-condition-group > caption{flex-wrap:wrap;row-gap:4px;min-width:0}

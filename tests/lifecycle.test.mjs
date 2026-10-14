@@ -29,3 +29,9 @@ test('Registration failure rolls back already registered preference observers',a
  const {controller,live}=environment(async()=>{throw new Error('pane unavailable');});
  await assert.rejects(controller.start(),/pane unavailable/);assert.equal(live.size,0);assert.equal(controller.active,false);
 });
+
+test('Stylesheet revision differs between installs and remains stable within a controller',()=>{
+ const a=environment().controller,b=environment().controller;
+ assert.notEqual(a.styleRevision,b.styleRevision);
+ const revision=a.styleRevision;a.refresh();assert.equal(a.styleRevision,revision);
+});
