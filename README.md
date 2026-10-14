@@ -14,7 +14,6 @@ Material colors and frosted glass for Zotero on macOS.
 ![Platform](https://img.shields.io/badge/macOS-Apple_Silicon-6750A4?style=flat-square)
 ![Zotero](https://img.shields.io/badge/Zotero-10-6750A4?style=flat-square)
 ![Appearance](https://img.shields.io/badge/theme-light_%26_dark-6750A4?style=flat-square)
-[![Zotero Capsules Tag](https://img.shields.io/badge/%E5%8F%8B%E9%93%BE-Zotero%20Veil-6750A4?style=flat-square)]([https://github.com/LiuAoran/zotero-capsules-status-tag](https://github.com/LiuAoran/zotero-capsules-status-tag))
 
 
 [**下载 XPI**](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.2.xpi)
