@@ -19,12 +19,12 @@ export function presetTransparency(level) {
 
 export function glassPolicy({enabled, reducedTransparency = false, increasedContrast = false, available = false, level = 'balanced'}) {
   const alpha = GLASS_LEVELS[normalizeGlassLevel(level)];
-  if (!enabled) return {active: false, alpha, reason: '毛玻璃已关闭'};
+  if (!enabled) return {active: false, alpha, reason: '雾面玻璃已关闭', reasonKey: 'zotero-veil-glass-off'};
   if (reducedTransparency || increasedContrast) {
-    return {active: false, alpha, reason: '系统辅助功能设置：使用实色'};
+    return {active: false, alpha, reason: '系统辅助功能设置：使用实色', reasonKey: 'zotero-veil-glass-accessibility'};
   }
-  if (!available) return {active: false, alpha, reason: '当前设备使用实色'};
-  return {active: true, alpha, reason: '毛玻璃已启用'};
+  if (!available) return {active: false, alpha, reason: '当前设备使用实色', reasonKey: 'zotero-veil-glass-unavailable'};
+  return {active: true, alpha, reason: '雾面玻璃已启用', reasonKey: 'zotero-veil-glass-active'};
 }
 
 /** A continuous tint replaces separate backings on ordinary rows. */

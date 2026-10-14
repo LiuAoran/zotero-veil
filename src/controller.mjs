@@ -1,3 +1,5 @@
+import {englishFallback,localizeSettings} from './i18n.mjs';
+export {loadTranslator} from './i18n.mjs';
 import {DEFAULTS,PRESETS,normalizeSeed,normalizeMode,effectiveMode,createScheme,tokenCSS} from './palette.mjs';
 import {readerCSS,syncPDFMargins,clearPDFMargins} from './reader.mjs';
 import {NativeGlass} from './native-glass.mjs';
@@ -10,8 +12,8 @@ export const PANE_ID='zmt-material-theme';
 
 /** Owns only plugin preferences, scoped sheets and listeners. No item APIs. */
 export class ThemeController {
-  constructor({zotero,rootURI,id,version,nativeEnvironment}) {
-    this.zotero=zotero;this.rootURI=rootURI;this.id=id;this.version=version;
+  constructor({zotero,rootURI,id,version,nativeEnvironment,translate=englishFallback}) {
+    this.t=translate;this.zotero=zotero;this.rootURI=rootURI;this.id=id;this.version=version;
     this.windows=new Map();this.settings=new Map();this.readers=new Map();this.observers=[];this.paneID=null;this.active=false;this.cache=new Map();
     this.readerListener=({doc})=>this.attachReader(doc);
     this.generation=0;this.startPending=false;
@@ -48,7 +50,7 @@ export class ThemeController {
     this.active=true;
     try {
       for(const key of Object.keys(DEFAULTS))this.observers.push(this.zotero.Prefs.registerObserver(PREF+key,()=>this.refresh()));
-      const paneID=await this.zotero.PreferencePanes.register({pluginID:this.id,id:PANE_ID,label:'Veil 外观',src:this.rootURI+'content/preferences.xhtml',image:this.rootURI+'assets/icon.svg'});
+      const paneID=await this.zotero.PreferencePanes.register({pluginID:this.id,id:PANE_ID,label:this.t('zotero-veil-pane'),src:this.rootURI+'content/preferences.xhtml',image:this.rootURI+'assets/icon.svg'});
       if(!this.active||this.generation!==generation){this.cleanup([()=>this.zotero.PreferencePanes.unregister(paneID)]);return;}
       this.paneID=paneID;
       this.zotero.Reader.registerEventListener('renderToolbar',this.readerListener,this.id);
@@ -98,7 +100,7 @@ export class ThemeController {
     if(eligible&&settings.glass)try{native=this.nativeGlass.accessibility();}catch(error){this.zotero.logError(error);}
     let policy=glassPolicy({enabled:settings.glass,...native,reducedTransparency:native.reducedTransparency||record.transparency.matches,level:settings.glassLevel});
     if(eligible&&policy.active&&!this.nativeGlass.apply(record.win,mode,settings.glassTransparency))policy=glassPolicy({enabled:true,available:false,level:settings.glassLevel});
-    record.glassStatus=policy.reason;
+    record.glassStatus=this.t(policy.reasonKey);
     if(record.glassFrame){record.win.cancelAnimationFrame(record.glassFrame);record.glassFrame=null;}
     if(eligible&&policy.active){
       record.root.setAttribute('data-zmt-glass','native');
@@ -106,7 +108,7 @@ export class ThemeController {
         record.glassFrame=null;
         if(this.active&&this.windows.get(record.win)===record&&record.root.getAttribute('data-zmt-glass')==='native'){
           if(!this.nativeGlass.apply(record.win,mode,settings.glassTransparency)){
-            record.root.removeAttribute('data-zmt-glass');record.glassStatus='原生材质不可用：使用实色主题';
+            record.root.removeAttribute('data-zmt-glass');record.glassStatus=this.t('zotero-veil-glass-unavailable');
             for(const reader of this.readers.values())this.applyReader(reader);
             for(const [root,settingsRecord] of this.settings)if(root.isConnected)settingsRecord.update();
           }
@@ -128,6 +130,7 @@ export class ThemeController {
   }
   mountSettings(root) {
     if(!this.active||this.settings.has(root))return;
+    localizeSettings(root,this.t);
     const win=root.ownerDocument.defaultView;
     this.attachWindow(win);
     const cleanup=[],listen=(node,event,handler)=>{node.addEventListener(event,handler);cleanup.push(()=>node.removeEventListener(event,handler));};
@@ -143,10 +146,10 @@ export class ThemeController {
       query('zmt-glass-level').value=settings.glassTransparency===presetTransparency(settings.glassLevel)?settings.glassLevel:'custom';query('zmt-glass-level').disabled=!settings.glass;
       query('zmt-glass-transparency').value=settings.glassTransparency;query('zmt-glass-transparency').disabled=!settings.glass;
       query('zmt-glass-transparency-value').textContent=settings.glassTransparency+'%';
-      query('zmt-glass-status').textContent=[...this.windows.values()].find(record=>record.root.id==='main-window')?.glassStatus??'仅文库主窗口使用原生材质';
+      query('zmt-glass-status').textContent=[...this.windows.values()].find(record=>record.root.id==='main-window')?.glassStatus??this.t('zotero-veil-glass-main-only');
       root.querySelectorAll('[data-preset]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.preset===settings.seed)));
     };
-    const save=(key,value)=>{try{this.setSetting(key,value);report('已应用并自动保存');return true;}catch(error){report(error.message,true);return false;}};
+    const save=(key,value)=>{try{this.setSetting(key,value);report(this.t('zotero-veil-saved'));return true;}catch(error){const errors={seed:'seed-error',mode:'mode-error',reduceMotion:'motion-error',glass:'glass-error',glassLevel:'level-error',glassTransparency:'transparency-error'};report(this.t('zotero-veil-'+(errors[key]??'save-error')),true);this.zotero.logError(error);return false;}};
     for(const button of root.querySelectorAll('[data-mode-choice]'))listen(button,'click',()=>save('mode',button.dataset.modeChoice));
     // Arrow keys move within this single-choice group; Tab remains native.
     listen(root.querySelector('.zmt-segmented'),'keydown',event=>{
@@ -161,11 +164,11 @@ export class ThemeController {
       event.preventDefault();buttons[next].focus();buttons[next].click();
     });
     for(const [i,preset] of PRESETS.entries()) {
-      const button=query('zmt-preset-'+i);button.dataset.preset=preset.seed;button.textContent=preset.name;
+      const button=query('zmt-preset-'+i);button.dataset.preset=preset.seed;button.textContent=this.t('zotero-veil-'+['preset-iris','preset-teal','preset-moss'][i]);
       listen(button,'click',()=>save('seed',preset.seed));
     }
     const text=query('zmt-seed-text');
-    listen(text,'input',()=>{if(/^#[0-9a-f]{6}$/i.test(text.value.trim())){text.removeAttribute('aria-invalid');save('seed',text.value);}else{text.setAttribute('aria-invalid','true');report('请输入 #RRGGBB；当前配色保持不变',true);}});
+    listen(text,'input',()=>{if(/^#[0-9a-f]{6}$/i.test(text.value.trim())){text.removeAttribute('aria-invalid');save('seed',text.value);}else{text.setAttribute('aria-invalid','true');report(this.t('zotero-veil-seed-error'),true);}});
     listen(text,'change',()=>{if(!save('seed',text.value))text.setAttribute('aria-invalid','true');else text.removeAttribute('aria-invalid');});
     listen(query('zmt-seed-color'),'input',event=>{text.removeAttribute('aria-invalid');save('seed',event.target.value);});
     listen(query('zmt-reduce-motion'),'change',event=>save('reduceMotion',event.target.checked));

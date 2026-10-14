@@ -4,7 +4,7 @@
 
 # Zotero Veil
 
-Material colors and soft glass for Zotero on macOS.
+Material colors and frosted glass for Zotero on macOS.
 
 [简体中文](README.md) · [English](README.en.md)
 
@@ -15,7 +15,7 @@ Material colors and soft glass for Zotero on macOS.
 ![Zotero](https://img.shields.io/badge/Zotero-10-6750A4?style=flat-square)
 ![Appearance](https://img.shields.io/badge/theme-light_%26_dark-6750A4?style=flat-square)
 
-[**Download XPI**](https://github.com/LiuAoran/zotero-veil/tree/main/downloads)
+[**Download XPI**](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.2.xpi)
 
 [Screenshots](#screenshots) · [Installation](#installation) · [Features](#features) · [Compatibility](#compatibility) · [Development](#development)
 
@@ -27,7 +27,7 @@ A theme for Zotero 10 on macOS, preserving existing shortcuts, item operations, 
 
 ## Screenshots
 
-Real macOS screenshots. Appearance varies with your desktop background, seed color, and transparency setting. The screenshots and current settings interface use Chinese.
+Real macOS screenshots. Appearance varies with your desktop background, seed color, and transparency setting. Library screenshots use Chinese; the settings interface supports both Chinese and English.
 
 ### Light library
 
@@ -50,26 +50,26 @@ Real macOS screenshots. Appearance varies with your desktop background, seed col
 
 **Appearance settings**
 
-![Appearance settings](docs/screenshots/settings.png)
+![English appearance settings](docs/screenshots/settings-en.png)
 
 </details>
 
 ## Installation
 
-[Open the download folder](https://github.com/LiuAoran/zotero-veil/tree/main/downloads), select the XPI file, then choose **Download raw file**.
+[Open the download folder](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.2.xpi), select the XPI file, then choose **Download raw file**.
 
 1. In Zotero, open **Tools → Plugins** and choose **Install Plugin From File** from the gear menu.
 2. Select the downloaded XPI.
-3. Open **Settings → Veil 外观** to configure appearance and colors.
+3. Open **Settings → Veil Appearance** to configure appearance and colors.
 
-Changes apply immediately and are saved automatically. Disabling the plugin restores Zotero's original interface while retaining your theme preferences. The settings interface currently uses Chinese; this English README does not imply that the plugin UI is localized.
+Changes apply immediately and are saved automatically. Disabling the plugin restores Zotero's original interface while retaining your theme preferences. Veil follows Zotero’s interface language: Chinese uses Simplified Chinese, and other languages use English. Only Veil’s own labels and messages are translated; it never changes Zotero, system, or other plugin language settings. Restart Zotero after changing its interface language.
 
 ## Features
 
 - Light, dark, and system appearance modes.
 - Custom seed colors and three presets, using official Material Color Utilities.
 - Consistent styling for library navigation, search, item lists, details, and reader chrome.
-- Native glass on Apple Silicon Mac, with an adjustable tint layer (10% at the highest transparency), full-strength native blur, and subtle sidebar separation.
+- Native frosted glass on Apple Silicon Mac, with an adjustable tint layer (10% at the highest transparency), full-strength native blur, and subtle sidebar separation.
 - Visible selection, focus, and editing states; reduced-motion support.
 - Transparent margins outside PDF pages, preserving paper, annotations, item data, and note content.
 
@@ -83,7 +83,7 @@ There is no working automatic update service; install an XPI manually to update.
 
 ## Development
 
-Requires Node.js, npm, and Python 3:
+Requires Node.js 22 or newer, npm, and Python 3:
 
 ```sh
 npm ci --ignore-scripts

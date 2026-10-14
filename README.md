@@ -4,7 +4,7 @@
 
 # Zotero Veil
 
-Material colors and soft glass for Zotero on macOS.
+Material colors and frosted glass for Zotero on macOS.
 
 [简体中文](README.md) · [English](README.en.md)
 
@@ -15,7 +15,7 @@ Material colors and soft glass for Zotero on macOS.
 ![Zotero](https://img.shields.io/badge/Zotero-10-6750A4?style=flat-square)
 ![Appearance](https://img.shields.io/badge/theme-light_%26_dark-6750A4?style=flat-square)
 
-[**下载 XPI**](https://github.com/LiuAoran/zotero-veil/tree/main/downloads)
+[**下载 XPI**](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.2.xpi)
 
 [外观](#外观) · [安装](#安装) · [功能](#功能)  · [开发](#开发)
 
@@ -47,11 +47,13 @@ Material colors and soft glass for Zotero on macOS.
 
 **外观设置**
 
-![外观设置](docs/screenshots/settings.png)
+![中文外观设置](docs/screenshots/settings.png)
+
+![英文外观设置](docs/screenshots/settings-en.png)
 
 ## 安装
 
-[前往下载目录](https://github.com/LiuAoran/zotero-veil/tree/main/downloads)，打开 XPI 文件并选择 Download raw file。
+[前往下载目录](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.2.xpi)，打开 XPI 文件并选择 Download raw file。
 
 1. 在 Zotero 的“工具 → 插件”中选择“从文件安装插件”。
 2. 安装 XPI 文件。
@@ -59,18 +61,33 @@ Material colors and soft glass for Zotero on macOS.
 
 设置即时生效并自动保存。禁用插件可恢复原界面，主题偏好会保留。
 
+## 语言
+
+Veil 跟随 Zotero 的界面语言：中文显示简体中文，其他语言使用英文。仅翻译 Veil 自己的设置、提示和无障碍标签，不修改 Zotero、系统或其他插件语言。改变 Zotero 语言后，按 Zotero 提示重启。
+
 ## 功能
 
 - 浅色、深色、跟随系统。
 - 自定义种子色与三个配色预设，使用官方 Material Color Utilities 生成语义配色。
 - 文库导航、搜索、文献列表、详情面板和阅读器工具栏的统一外观。
-- Apple Silicon Mac 原生毛玻璃，可用滑动条调整附加色层，最高档保留10%色层；保留全强度原生模糊和轻微侧栏色差。
+- Apple Silicon Mac 原生雾面玻璃，可用滑动条调整附加色层，最高档保留10%色层；保留全强度原生模糊和轻微侧栏色差。
 - 保留选中、焦点及编辑状态，支持减少动态效果。
 - PDF 页外背景透明，纸张、标注、文献数据和笔记内容不变。
 
+<<<<<<< Updated upstream
+=======
+## 兼容与限制
+
+支持 Zotero 10.0.*，实机检查环境为 Zotero 10.0.6。原生雾面玻璃目前仅在 Apple Silicon macOS 验证。其他平台待测试；代码会在原生材质不可用或系统“减少透明度／增强对比度”开启时回退实色，但这不代表其他平台已通过兼容性验证。
+
+雾面玻璃是 Material 配色与 macOS 材质的融合扩展，不属于官方 Material Design 3 组件。高通透度在复杂背景下不保证文字对比度，阅读不清时请降低数值。系统菜单、PDF 页面、笔记编辑器和第三方插件区域保留原有外观。独立阅读器窗口、Intel／Rosetta、VoiceOver 和其他插件组合尚未完整验证。
+
+无可用的自动更新服务，升级请手动安装 XPI。设置窗口和内容截图检查不等于桌面背景动态磨砂已验证。详见[验证说明](docs/验证说明.md)。
+
+>>>>>>> Stashed changes
 ## 开发
 
-需要 Node.js、npm 和 Python 3：
+需要 Node.js 22 或更新版本、npm 和 Python 3：
 
 ```sh
 npm ci --ignore-scripts

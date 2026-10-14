@@ -1,55 +1,55 @@
 <html:section xmlns:html="http://www.w3.org/1999/xhtml" id="zmt-settings" class="main-section" onload="Zotero.MaterialThemeMD3.mountSettings(this)">
-  <html:p class="zmt-intro">选择外观与配色。</html:p>
+  <html:p class="zmt-intro" data-veil-text="zotero-veil-intro">Choose appearance and colors.</html:p>
   <html:fieldset>
-    <html:legend>外观</html:legend>
-    <html:div class="zmt-segmented" role="group" aria-label="主题模式">
-      <html:button type="button" data-mode-choice="light" aria-pressed="false">浅色</html:button>
-      <html:button type="button" data-mode-choice="dark" aria-pressed="false">深色</html:button>
-      <html:button type="button" data-mode-choice="system" aria-pressed="true">跟随系统</html:button>
+    <html:legend data-veil-text="zotero-veil-appearance">Appearance</html:legend>
+    <html:div class="zmt-segmented" role="group" aria-label="Appearance mode" data-veil-label="zotero-veil-mode-label">
+      <html:button type="button" data-mode-choice="light" aria-pressed="false" data-veil-text="zotero-veil-light">Light</html:button>
+      <html:button type="button" data-mode-choice="dark" aria-pressed="false" data-veil-text="zotero-veil-dark">Dark</html:button>
+      <html:button type="button" data-mode-choice="system" aria-pressed="true" data-veil-text="zotero-veil-system">System</html:button>
     </html:div>
   </html:fieldset>
   <html:fieldset>
-    <html:legend>种子色</html:legend>
+    <html:legend data-veil-text="zotero-veil-seed">Seed color</html:legend>
     <html:div class="zmt-seed-row">
-      <html:input type="color" id="zmt-seed-color" aria-label="选择种子色" value="#6750a4" />
-      <html:label for="zmt-seed-text">十六进制颜色</html:label>
+      <html:input type="color" id="zmt-seed-color" aria-label="Choose a seed color" data-veil-label="zotero-veil-seed-label" value="#6750a4" />
+      <html:label for="zmt-seed-text" data-veil-text="zotero-veil-hex">Hex color</html:label>
       <html:input type="text" id="zmt-seed-text" value="#6750A4" spellcheck="false" maxlength="7" aria-describedby="zmt-seed-help" />
     </html:div>
-    <html:p id="zmt-seed-help" class="zmt-support">主色由种子色生成，可能略有不同。</html:p>
-    <html:div class="zmt-presets" role="group" aria-label="配色预设">
-      <html:button type="button" id="zmt-preset-0">鸢尾紫</html:button>
-      <html:button type="button" id="zmt-preset-1">青绿</html:button>
-      <html:button type="button" id="zmt-preset-2">苔绿</html:button>
+    <html:p id="zmt-seed-help" class="zmt-support" data-veil-text="zotero-veil-seed-help">The generated primary color may differ from the seed.</html:p>
+    <html:div class="zmt-presets" role="group" aria-label="Color presets" data-veil-label="zotero-veil-presets-label">
+      <html:button type="button" id="zmt-preset-0" data-veil-text="zotero-veil-preset-iris">Iris</html:button>
+      <html:button type="button" id="zmt-preset-1" data-veil-text="zotero-veil-preset-teal">Teal</html:button>
+      <html:button type="button" id="zmt-preset-2" data-veil-text="zotero-veil-preset-moss">Moss</html:button>
     </html:div>
-    <html:div class="zmt-role-swatches" aria-label="当前语义配色">
-      <html:div class="zmt-primary-swatch">主色</html:div>
-      <html:div class="zmt-secondary-swatch">选中容器</html:div>
-      <html:div class="zmt-surface-swatch">表面容器</html:div>
+    <html:div class="zmt-role-swatches" aria-label="Current theme colors" data-veil-label="zotero-veil-roles-label">
+      <html:div class="zmt-primary-swatch" data-veil-text="zotero-veil-primary">Primary</html:div>
+      <html:div class="zmt-secondary-swatch" data-veil-text="zotero-veil-selection">Selection</html:div>
+      <html:div class="zmt-surface-swatch" data-veil-text="zotero-veil-surface">Surface</html:div>
     </html:div>
   </html:fieldset>
   <html:fieldset>
-    <html:legend>毛玻璃</html:legend>
-    <html:label class="zmt-switch"><html:input type="checkbox" id="zmt-glass" /><html:span>启用毛玻璃</html:span></html:label>
-    <html:label for="zmt-glass-level">预设</html:label>
+    <html:legend data-veil-text="zotero-veil-glass">Frosted glass</html:legend>
+    <html:label class="zmt-switch"><html:input type="checkbox" id="zmt-glass" /><html:span data-veil-text="zotero-veil-glass-enable">Enable frosted glass</html:span></html:label>
+    <html:label for="zmt-glass-level" data-veil-text="zotero-veil-preset">Preset</html:label>
     <html:select id="zmt-glass-level">
-      <html:option value="balanced">通透</html:option>
-      <html:option value="quiet">更清晰</html:option>
-      <html:option value="custom" disabled="disabled">自定义</html:option>
+      <html:option value="balanced" data-veil-text="zotero-veil-balanced">Clear</html:option>
+      <html:option value="quiet" data-veil-text="zotero-veil-quiet">More readable</html:option>
+      <html:option value="custom" disabled="disabled" data-veil-text="zotero-veil-custom">Custom</html:option>
     </html:select>
     <html:div class="zmt-transparency-row">
-      <html:label for="zmt-glass-transparency">通透度</html:label>
+      <html:label for="zmt-glass-transparency" data-veil-text="zotero-veil-transparency">Transparency</html:label>
       <html:input type="range" id="zmt-glass-transparency" min="0" max="100" step="1" value="82" aria-describedby="zmt-glass-transparency-help" />
       <html:output id="zmt-glass-transparency-value" for="zmt-glass-transparency">82%</html:output>
     </html:div>
-    <html:p id="zmt-glass-transparency-help" class="zmt-support">数值越高越通透，系统磨砂保留。</html:p>
-    <html:p id="zmt-glass-status" class="zmt-support" role="status" aria-live="polite">检查兼容性…</html:p>
-    <html:p class="zmt-support">仅 Apple Silicon Mac 支持。系统减少透明度或增强对比度时使用实色。高通透度下若文字不清，请降低数值。</html:p>
+    <html:p id="zmt-glass-transparency-help" class="zmt-support" data-veil-text="zotero-veil-transparency-help">Higher values reveal more background. Native blur is preserved.</html:p>
+    <html:p id="zmt-glass-status" class="zmt-support" role="status" aria-live="polite" data-veil-text="zotero-veil-checking">Checking availability…</html:p>
+    <html:p class="zmt-support" data-veil-text="zotero-veil-glass-help">Frosted glass is available on Apple Silicon Mac. Reduce Transparency or Increase Contrast uses solid colors. Lower transparency if text is difficult to read.</html:p>
   </html:fieldset>
   <html:fieldset>
-    <html:legend>动态效果</html:legend>
-    <html:label class="zmt-switch"><html:input type="checkbox" id="zmt-reduce-motion" /><html:span>减少动态效果</html:span></html:label>
-    <html:p class="zmt-support">遵循系统动态效果设置。</html:p>
+    <html:legend data-veil-text="zotero-veil-motion">Motion</html:legend>
+    <html:label class="zmt-switch"><html:input type="checkbox" id="zmt-reduce-motion" /><html:span data-veil-text="zotero-veil-motion-reduce">Reduce motion</html:span></html:label>
+    <html:p class="zmt-support" data-veil-text="zotero-veil-motion-help">Respects the system reduced-motion setting.</html:p>
   </html:fieldset>
-  <html:p class="zmt-support">保留 Zotero 的列表密度、文字缩放和原有操作。</html:p>
-  <html:p id="zmt-feedback" role="status" aria-live="polite" data-error="false">即时生效，自动保存。</html:p>
+  <html:p class="zmt-support" data-veil-text="zotero-veil-native-help">Preserves Zotero’s list density, text scaling, and existing controls.</html:p>
+  <html:p id="zmt-feedback" role="status" aria-live="polite" data-error="false" data-veil-text="zotero-veil-autosave">Changes apply immediately and save automatically.</html:p>
 </html:section>

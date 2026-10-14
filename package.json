@@ -1,6 +1,6 @@
 {
   "name": "zotero-veil",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "type": "module",
   "description": "Scoped Material Design 3 theme for Zotero 10",

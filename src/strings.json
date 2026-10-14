@@ -1,0 +1,194 @@
+{
+  "zotero-veil-pane": {
+    "zh-CN": "Veil 外观",
+    "en-US": "Veil Appearance"
+  },
+  "zotero-veil-intro": {
+    "zh-CN": "选择外观与配色。",
+    "en-US": "Choose appearance and colors."
+  },
+  "zotero-veil-appearance": {
+    "zh-CN": "外观",
+    "en-US": "Appearance"
+  },
+  "zotero-veil-mode-label": {
+    "zh-CN": "主题模式",
+    "en-US": "Appearance mode"
+  },
+  "zotero-veil-light": {
+    "zh-CN": "浅色",
+    "en-US": "Light"
+  },
+  "zotero-veil-dark": {
+    "zh-CN": "深色",
+    "en-US": "Dark"
+  },
+  "zotero-veil-system": {
+    "zh-CN": "跟随系统",
+    "en-US": "System"
+  },
+  "zotero-veil-seed": {
+    "zh-CN": "种子色",
+    "en-US": "Seed color"
+  },
+  "zotero-veil-seed-label": {
+    "zh-CN": "选择种子色",
+    "en-US": "Choose a seed color"
+  },
+  "zotero-veil-hex": {
+    "zh-CN": "十六进制颜色",
+    "en-US": "Hex color"
+  },
+  "zotero-veil-seed-help": {
+    "zh-CN": "主色由种子色生成，可能略有不同。",
+    "en-US": "The generated primary color may differ from the seed."
+  },
+  "zotero-veil-presets-label": {
+    "zh-CN": "配色预设",
+    "en-US": "Color presets"
+  },
+  "zotero-veil-preset-iris": {
+    "zh-CN": "鸢尾紫",
+    "en-US": "Iris"
+  },
+  "zotero-veil-preset-teal": {
+    "zh-CN": "青绿",
+    "en-US": "Teal"
+  },
+  "zotero-veil-preset-moss": {
+    "zh-CN": "苔绿",
+    "en-US": "Moss"
+  },
+  "zotero-veil-roles-label": {
+    "zh-CN": "当前语义配色",
+    "en-US": "Current theme colors"
+  },
+  "zotero-veil-primary": {
+    "zh-CN": "主色",
+    "en-US": "Primary"
+  },
+  "zotero-veil-selection": {
+    "zh-CN": "选中容器",
+    "en-US": "Selection"
+  },
+  "zotero-veil-surface": {
+    "zh-CN": "表面容器",
+    "en-US": "Surface"
+  },
+  "zotero-veil-glass": {
+    "zh-CN": "雾面玻璃",
+    "en-US": "Frosted glass"
+  },
+  "zotero-veil-glass-enable": {
+    "zh-CN": "启用雾面玻璃",
+    "en-US": "Enable frosted glass"
+  },
+  "zotero-veil-preset": {
+    "zh-CN": "预设",
+    "en-US": "Preset"
+  },
+  "zotero-veil-balanced": {
+    "zh-CN": "通透",
+    "en-US": "Clear"
+  },
+  "zotero-veil-quiet": {
+    "zh-CN": "更清晰",
+    "en-US": "More readable"
+  },
+  "zotero-veil-custom": {
+    "zh-CN": "自定义",
+    "en-US": "Custom"
+  },
+  "zotero-veil-transparency": {
+    "zh-CN": "通透度",
+    "en-US": "Transparency"
+  },
+  "zotero-veil-transparency-help": {
+    "zh-CN": "数值越高越通透，系统磨砂保留。",
+    "en-US": "Higher values reveal more background. Native blur is preserved."
+  },
+  "zotero-veil-checking": {
+    "zh-CN": "检查兼容性…",
+    "en-US": "Checking availability…"
+  },
+  "zotero-veil-glass-help": {
+    "zh-CN": "仅 Apple Silicon Mac 支持。系统减少透明度或增强对比度时使用实色。高通透度下若文字不清，请降低数值。",
+    "en-US": "Frosted glass is available on Apple Silicon Mac. Reduce Transparency or Increase Contrast uses solid colors. Lower transparency if text is difficult to read."
+  },
+  "zotero-veil-motion": {
+    "zh-CN": "动态效果",
+    "en-US": "Motion"
+  },
+  "zotero-veil-motion-reduce": {
+    "zh-CN": "减少动态效果",
+    "en-US": "Reduce motion"
+  },
+  "zotero-veil-motion-help": {
+    "zh-CN": "遵循系统动态效果设置。",
+    "en-US": "Respects the system reduced-motion setting."
+  },
+  "zotero-veil-native-help": {
+    "zh-CN": "保留 Zotero 的列表密度、文字缩放和原有操作。",
+    "en-US": "Preserves Zotero’s list density, text scaling, and existing controls."
+  },
+  "zotero-veil-autosave": {
+    "zh-CN": "即时生效，自动保存。",
+    "en-US": "Changes apply immediately and save automatically."
+  },
+  "zotero-veil-saved": {
+    "zh-CN": "已应用并自动保存",
+    "en-US": "Applied and saved."
+  },
+  "zotero-veil-seed-error": {
+    "zh-CN": "请输入 #RRGGBB；当前配色保持不变",
+    "en-US": "Enter a #RRGGBB color. The previous color is unchanged."
+  },
+  "zotero-veil-mode-error": {
+    "zh-CN": "无效的外观模式",
+    "en-US": "Invalid appearance mode."
+  },
+  "zotero-veil-motion-error": {
+    "zh-CN": "无效动态效果设置",
+    "en-US": "Invalid motion setting."
+  },
+  "zotero-veil-glass-error": {
+    "zh-CN": "无效材质设置",
+    "en-US": "Invalid glass setting."
+  },
+  "zotero-veil-level-error": {
+    "zh-CN": "无效的材质强度",
+    "en-US": "Invalid glass preset."
+  },
+  "zotero-veil-transparency-error": {
+    "zh-CN": "通透度应为0到100",
+    "en-US": "Transparency must be between 0 and 100."
+  },
+  "zotero-veil-save-error": {
+    "zh-CN": "未能保存设置，请重试",
+    "en-US": "Could not save the setting. Please try again."
+  },
+  "zotero-veil-disabled": {
+    "zh-CN": "主题已禁用",
+    "en-US": "Veil is disabled."
+  },
+  "zotero-veil-glass-off": {
+    "zh-CN": "雾面玻璃已关闭",
+    "en-US": "Frosted glass is off."
+  },
+  "zotero-veil-glass-accessibility": {
+    "zh-CN": "系统辅助功能设置：使用实色",
+    "en-US": "Using solid colors for system accessibility settings."
+  },
+  "zotero-veil-glass-unavailable": {
+    "zh-CN": "当前设备使用实色",
+    "en-US": "Native glass is unavailable. Using solid colors."
+  },
+  "zotero-veil-glass-active": {
+    "zh-CN": "雾面玻璃已启用",
+    "en-US": "Frosted glass is on."
+  },
+  "zotero-veil-glass-main-only": {
+    "zh-CN": "仅文库主窗口使用原生材质",
+    "en-US": "Native glass is applied to the main library window."
+  }
+}

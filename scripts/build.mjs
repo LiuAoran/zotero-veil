@@ -6,6 +6,11 @@ const root=process.cwd();
 await fs.mkdir('dist',{recursive:true});
 await fs.rm('build',{recursive:true,force:true});
 await fs.cp('addon','build',{recursive:true});
+const strings=JSON.parse(await fs.readFile('src/strings.json','utf8'));
+for(const locale of ['en-US','zh-CN']){
+  const folder=path.join('build','locale',locale);await fs.mkdir(folder,{recursive:true});
+  await fs.writeFile(path.join(folder,'zotero-veil.ftl'),Object.entries(strings).map(([key,text])=>`${key} = ${text[locale]}`).join('\n')+'\n');
+}
 await build({entryPoints:['src/controller.mjs'],outfile:'build/content/theme.js',bundle:true,format:'iife',globalName:'ZMTBundle',target:'firefox140',minify:false,legalComments:'eof'});
 await fs.cp('licenses','build/licenses',{recursive:true});
 await fs.copyFile('LICENSE','build/LICENSE');

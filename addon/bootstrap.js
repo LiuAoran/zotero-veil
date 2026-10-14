@@ -5,9 +5,11 @@ async function startup({id,rootURI,version}) {
   const generation=++lifecycleGeneration;
   await Zotero.initializationPromise;
   if(generation!==lifecycleGeneration)return;
-  bundleScope={};
-  Services.scriptloader.loadSubScriptWithOptions(rootURI+'content/theme.js',{target:bundleScope,charset:'UTF-8',ignoreCache:true});
-  controller=new bundleScope.ZMTBundle.ThemeController({zotero:Zotero,rootURI,id,version,nativeEnvironment:{services:Services,chromeUtils:ChromeUtils,ci:Ci}});
+  const scope={};bundleScope=scope;
+  Services.scriptloader.loadSubScriptWithOptions(rootURI+'content/theme.js',{target:scope,charset:'UTF-8',ignoreCache:true});
+  const translate=await scope.ZMTBundle.loadTranslator(Localization,Services.locale.appLocaleAsBCP47);
+  if(generation!==lifecycleGeneration)return;
+  controller=new scope.ZMTBundle.ThemeController({zotero:Zotero,rootURI,id,version,translate,nativeEnvironment:{services:Services,chromeUtils:ChromeUtils,ci:Ci}});
   Zotero.MaterialThemeMD3=controller;
   try {await controller.start();}
   catch(error){delete Zotero.MaterialThemeMD3;controller=null;bundleScope=null;throw error;}
