@@ -204,7 +204,7 @@
 :root#main-window[data-zmt-glass=native] #zotero-item-pane :is(.zotero-view-item-main,#zotero-view-item,#zotero-item-message,item-pane-header,item-pane-sidenav){background:transparent}
 :root#main-window[data-zmt-glass=native] #zotero-item-pane :is(item-pane-header .title,info-box .meta-row,.zotero-item-pane-message-box){background:transparent}
 :root#main-window[data-zmt-glass=native] #zotero-item-pane :is(item-pane-header,info-box,abstract-box,attachments-box,notes-box,tags-box,related-box,libraries-collections-box)>collapsible-section>.head{background:transparent}
-:root#main-window[data-zmt-glass=native] #zotero-tag-selector :is(.tag-selector-message,.tag-selector-item:not(.selected)){background:transparent}
+:root#main-window[data-zmt-glass=native] #zotero-tag-selector .tag-selector-message{background:transparent}
 :root#main-window[data-zmt-glass=native] :is(#zotero-toolbar-collection-tree,#zotero-toolbar-item-tree,#zotero-tabs-toolbar) toolbarbutton:not([disabled=true]):not(:hover):not(:active){background:transparent}
 :root#main-window[data-zmt-glass=native] :is(#zotero-collections-splitter,#zotero-items-splitter,#zotero-tags-splitter){background:transparent}
 /* Square navigation rows use the original full-width hit box. */
@@ -267,3 +267,29 @@
 :root#main-window[data-zmt] #zotero-advanced-search-pane-deck .search-condition{min-width:0;max-width:100%;box-sizing:border-box;flex-wrap:wrap;row-gap:8px}
 :root#main-window[data-zmt] #zotero-advanced-search-pane-deck .search-condition > :is(#conditionsmenu,#operatorsmenu,.valuefield,.valuemenu,.value-date-age){min-width:100px;max-width:100%;flex:1 1 140px}
 :root#main-window[data-zmt] #zotero-advanced-search-pane-deck .search-condition-group > caption{flex-wrap:wrap;row-gap:4px;min-width:0}
+
+/* Native TagList owns measured sizes, wrapping and virtualized positions.
+   Keep native measurements and event targets; theme only the capsule surface. */
+:root#main-window[data-zmt] #zotero-tag-selector .tag-selector-item{
+  border-radius:var(--zmt-shape-full);
+  background:color-mix(in srgb,var(--zmt-secondary-container) 65%,transparent);
+  color:var(--zmt-on-surface);
+}
+:root#main-window[data-zmt] #zotero-tag-selector .tag-selector-item:not(.disabled):not(.selected):hover{
+  background:color-mix(in srgb,var(--zmt-on-secondary-container) 8%,var(--zmt-secondary-container));
+}
+:root#main-window[data-zmt] #zotero-tag-selector .tag-selector-item:not(.disabled):not(.selected):active{
+  background:color-mix(in srgb,var(--zmt-on-secondary-container) 10%,var(--zmt-secondary-container));
+}
+:root#main-window[data-zmt] #zotero-tag-selector .tag-selector-item.selected{
+  background:var(--zmt-secondary-container);
+  color:var(--zmt-on-secondary-container);
+}
+:root#main-window[data-zmt] #zotero-tag-selector .tag-selector-item:focus-visible{
+  outline:2px solid var(--zmt-primary);
+  outline-offset:-2px;
+}
+:root#main-window[data-zmt] #zotero-tag-selector .tag-selector-item.disabled{
+  background:var(--zmt-disabled-container);
+  color:var(--zmt-disabled-content);
+}

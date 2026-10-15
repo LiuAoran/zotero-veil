@@ -1,3 +1,4 @@
+import {deferredWindowRefresh} from './window-refresh.mjs';
 import {englishFallback,localizeSettings} from './i18n.mjs';
 export {loadTranslator} from './i18n.mjs';
 import {DEFAULTS,PRESETS,normalizeSeed,normalizeMode,effectiveMode,createScheme,tokenCSS} from './palette.mjs';
@@ -74,9 +75,11 @@ export class ThemeController {
     const unloaded=()=>this.detachWindow(win);
     win.addEventListener('unload',unloaded,{once:true});record.cleanups.push(()=>win.removeEventListener('unload',unloaded));
     // Native accessibility preferences are rechecked when returning to a window.
-    const focused=()=>this.refresh();win.addEventListener('activate',focused);record.cleanups.push(()=>win.removeEventListener('activate',focused));
+    const focusRefresh=deferredWindowRefresh(win,()=>this.refresh());
+    win.addEventListener('activate',focusRefresh.listener);record.cleanups.push(()=>win.removeEventListener('activate',focusRefresh.listener),focusRefresh.dispose);
     record.transparency=win.matchMedia('(prefers-reduced-transparency: reduce)');
-    record.transparency.addEventListener('change',focused);record.cleanups.push(()=>record.transparency.removeEventListener('change',focused));
+    const transparencyChanged=()=>this.refresh();
+    record.transparency.addEventListener('change',transparencyChanged);record.cleanups.push(()=>record.transparency.removeEventListener('change',transparencyChanged));
     this.windows.set(win,record);
     root.append(tokens,sheet);
     this.applyWindow(record);
