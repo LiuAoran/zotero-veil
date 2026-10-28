@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Zotero Veil",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Material colors and frosted glass for Zotero.",
   "author": "Zotero Veil contributors",
   "icons": {

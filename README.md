@@ -15,7 +15,7 @@ Material colors and frosted glass for Zotero on macOS.
 ![Zotero](https://img.shields.io/badge/Zotero-10-6750A4?style=flat-square)
 ![Appearance](https://img.shields.io/badge/theme-light_%26_dark-6750A4?style=flat-square)
 
-[**下载 XPI**](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.4.xpi)
+[**下载 XPI**](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.5.xpi)
 
 [外观](#外观) · [安装](#安装) · [功能](#功能) · [兼容与限制](#兼容与限制) · [开发](#开发)
 
@@ -58,7 +58,7 @@ Material colors and frosted glass for Zotero on macOS.
 
 ## 安装
 
-[前往下载目录](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.4.xpi)，打开 XPI 文件并选择 Download raw file。
+[前往下载目录](https://github.com/LiuAoran/zotero-veil/blob/main/downloads/zotero-veil-1.0.5.xpi)，打开 XPI 文件并选择 Download raw file。
 
 1. 在 Zotero 的“工具 → 插件”中选择“从文件安装插件”。
 2. 安装 XPI 文件。

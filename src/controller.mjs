@@ -194,7 +194,10 @@ export class ThemeController {
     const win=doc.defaultView,sheet=doc.createElement('style');sheet.id='zmt-reader-sheet';
     const record={doc,win,sheet,dark:win.matchMedia('(prefers-color-scheme:dark)'),motion:win.matchMedia('(prefers-reduced-motion:reduce)'),cleanups:[]};
     const changed=()=>this.applyReader(record);
-    doc.addEventListener?.('load',changed,true);record.cleanups.push(()=>doc.removeEventListener?.('load',changed,true));
+    // Gecko dispatches load for inline styles too. Listening to our own sheet
+    // would repeatedly replace it and schedule another load indefinitely.
+    const frameLoaded=event=>{if(event.target?.localName==='iframe')this.applyReader(record);};
+    doc.addEventListener?.('load',frameLoaded,true);record.cleanups.push(()=>doc.removeEventListener?.('load',frameLoaded,true));
     for(const media of [record.dark,record.motion]){media.addEventListener('change',changed);record.cleanups.push(()=>media.removeEventListener('change',changed));}
     const unload=()=>this.detachReader(doc);win.addEventListener('unload',unload,{once:true});record.cleanups.push(()=>win.removeEventListener('unload',unload));
     this.readers.set(doc,record);doc.head.append(sheet);this.applyReader(record);
@@ -205,7 +208,8 @@ export class ThemeController {
     const owner=[...this.windows.values()].find(({win})=>[...win.document.querySelectorAll('browser[src="resource://zotero/reader/reader.html"]')].some(frame=>(frame.contentDocument?.wrappedJSObject??frame.contentDocument)===record.doc));
     const glass=owner?.root.getAttribute('data-zmt-glass')==='native';
     syncPDFMargins(record,glass);
-    record.sheet.textContent=readerCSS(createScheme(settings.seed,mode==='dark'),settings.reduceMotion||record.motion.matches,{glass,level:settings.glassLevel,transparency:settings.glassTransparency});
+    const css=readerCSS(createScheme(settings.seed,mode==='dark'),settings.reduceMotion||record.motion.matches,{glass,level:settings.glassLevel,transparency:settings.glassTransparency});
+    if(record.sheet.textContent!==css)record.sheet.textContent=css;
   }
   detachReader(doc) {const record=this.readers.get(doc);if(!record)return;this.readers.delete(doc);this.cleanup([...record.cleanups,()=>clearPDFMargins(record),()=>record.sheet.remove()]);}
   stop() {
